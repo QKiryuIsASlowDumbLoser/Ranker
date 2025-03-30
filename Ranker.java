@@ -169,13 +169,15 @@ public class Ranker<E extends Comparable<E>>{
 
 
     public int getMaxRank(E value){
-        return this.getMinRank(value, this.tree) + this.getCount(value) - 1;
+        if(this.nodeMap.containsKey(value))
+            return this.getMinRank(value, this.tree) + this.getCount(value) - 1;
+        return -1;
     }
 
     public int getMinRank(E value){
         if(this.nodeMap.containsKey(value))
-        return getMinRank(value, this.tree);
-        return -1;
+            return getMinRank(value, this.tree);
+         return -1;
     }
     
     private int getMinRank(E value, Node<E> node){
@@ -263,7 +265,7 @@ public class Ranker<E extends Comparable<E>>{
                 items.add(iter.next());
             
             if(node.getRank()  + minRank >=  this.size - n)
-                insertNLargestItems(node.getLeft(), node.getRank()  + minRank, minRank, items, n);
+                insertNLargestItems(node.getLeft(), node.getRank() + minRank, minRank, items, n);
         }
     }
     
