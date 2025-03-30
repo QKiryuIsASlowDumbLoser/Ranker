@@ -262,8 +262,8 @@ public class Ranker<E extends Comparable<E>>{
             for(int i =0; i < numElementsInserted; i++)
                 items.add(iter.next());
             
-            if(node.getRank() +  node.getCount() + minRank >=  this.size - n)
-                insertNLargestItems(node.getLeft(), node.getRank() +  node.getCount() + minRank, minRank, items, n);
+            if(node.getRank()  + minRank >=  this.size - n)
+                insertNLargestItems(node.getLeft(), node.getRank()  + minRank, minRank, items, n);
         }
     }
     
