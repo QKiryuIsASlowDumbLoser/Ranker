@@ -6,7 +6,7 @@ import java.util.*;
 //Note if you want to use this with customClasses make sure the equals method will always return true for 2 objects where compareTo is 0
 public class Ranker<E extends Comparable<E>>{
     private static class Node<E>{
-        private Deque<E> items;
+        private MiddleRemovalDeque<E> items;
         private E value;
         private Node<E> left;
         private Node<E> right;
@@ -61,7 +61,7 @@ public class Ranker<E extends Comparable<E>>{
             this.parent = this.left = this.right = null;
             this.value = value;
             this.rightSubTreeSize = this.leftSubTreeSize=  this.rank= 0;
-            this.items = new ArrayDeque<>();
+            this.items = new MiddleRemovalDeque<>();
             this.items.add(value);
           
         }
@@ -383,5 +383,3 @@ public class Ranker<E extends Comparable<E>>{
     
         
         
-
-    
